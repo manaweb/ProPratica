@@ -13,12 +13,13 @@
 
     <!-- Add custom CSS here -->
     <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -28,11 +29,12 @@
             <span class="icon-bar"></span>
           </button>
           <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-          <a class="navbar-brand" href="index.html">ProPratica</a>
+          <a class="navbar-brand" href="index.html"><img src="img/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <img src="img/topo.png" class="pull-right">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
@@ -70,43 +72,43 @@
       </div><!-- /.container -->
     </nav>
     
-    <div id="myCarousel" class="carousel slide">
-      <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+    
+      <div id="myCarousel" class="carousel slide">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="fill" style="background-image:url('img/background1.png');"></div>
+              <div class="carousel-caption">
+                <h1>Sua vida mais<br>prática e produtiva</h1>
+              </div>
+            </div>
+            <div class="item">
+              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+              <div class="carousel-caption">
+                <h1>Ready to Style &amp; Add Content</h1>
+              </div>
+            </div>
+            <div class="item">
+              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+              <div class="carousel-caption">
+                <h1>Additional Layout Options at <a href="http://startbootstrap.com">http://startbootstrap.com</a></h1>
+              </div>
+            </div>
+          </div>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="fill" style="background-image:url('img/background1.png');"></div>
-            <div class="carousel-caption">
-              <h1>Sua vida mais<br>prática e produtiva</h1>
-            </div>
-          </div>
-          <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-            <div class="carousel-caption">
-              <h1>Ready to Style &amp; Add Content</h1>
-            </div>
-          </div>
-          <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-            <div class="carousel-caption">
-              <h1>Additional Layout Options at <a href="http://startbootstrap.com">http://startbootstrap.com</a></h1>
-            </div>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+          </a>
+      <!-- Carousel Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
     </div>
 
     <div class="section">
@@ -114,49 +116,15 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-lg-4 col-md-4">
-            <h3><i class="fa fa-check-circle"></i> Bootstrap 3 Built</h3>
-            <p>The 'Modern Business' website template by <a href="http://startbootstrap.com">Start Bootstrap</a> is built with <a href="http://getbootstrap.com">Bootstrap 3</a>. Make sure you're up to date with latest Bootstrap documentation!</p>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <h3><i class="fa fa-pencil"></i> Ready to Style &amp; Edit</h3>
-            <p>You're ready to go with this pre-built page structure, now all you need to do is add your own custom stylings! You can see some free themes over at <a href="http://bootswatch.com">Bootswatch</a>, or come up with your own using <a href="http://getbootstrap.com/customize/">the Bootstrap customizer</a>!</p>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <h3><i class="fa fa-folder-open"></i> Many Page Options</h3>
-            <p>This template features many common pages that you might see on a business website. Pages include: about, contact, portfolio variations, blog, pricing, FAQ, 404, services, and general multi-purpose pages.</p>
-          </div>
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-    </div><!-- /.section -->
-
-    <div class="section-colored text-center">
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>Modern Business: A Clean &amp; Simple Full Website Template by Start Bootstrap</h2>
-            <p>A complete website design featuring various single page templates from Start Bootstraps library of free HTML starter templates.</p>
-            <hr>
-          </div>
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-    </div><!-- /.section-colored -->
-
-    <div class="section">
-
-      <div class="container">
-
-        <div class="row">
           <div class="col-lg-12 text-center">
-            <h2>Display Some Work on the Home Page Portfolio</h2>
+            <h2>Buscando exelência em prestação de serviços</h2>
             <hr>
           </div>
+
+          <div class="col-lg-12 pull-left">
+            <h3>serviços</h3>
+          </div>
+
           <div class="col-lg-4 col-md-4 col-sm-6">
             <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
           </div>
@@ -180,95 +148,181 @@
       </div><!-- /.container -->
 
     </div><!-- /.section -->
-
-    <div class="section-colored">
+    
+    <div class="section">
 
       <div class="container">
 
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h2>Modern Business Features Include:</h2>
-            <ul>
-              <li>Bootstrap 3 Framework</li>
-              <li>Mobile Responsive Design</li>
-              <li>Predefined File Paths</li>
-              <li>Working PHP Contact Page</li>
-              <li>Minimal Custom CSS Styles</li>
-              <li>Unstyled: Add Your Own Style and Content!</li>
-              <li>Font-Awesome fonts come pre-installed!</li>
-              <li>100% <strong>Free</strong> to Use</li>
-              <li>Open Source: Use for any project, private or commercial!</li>
-            </ul>
+          <div class="col-lg-12 pull-left">
+            <h2>siga-nos no <strong>Facebook</strong></h2>
+            <div class="fb-like-box" data-href="http://www.facebook.com/FacebookDevelopers" data-width="auto" data-height="auto" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <img class="img-responsive" src="http://placehold.it/700x450/ffffff/cccccc">
-          </div>
+
         </div><!-- /.row -->
 
       </div><!-- /.container -->
 
-    </div><!-- /.section-colored -->
+    </div><!-- /.section -->
+
 
     <div class="section">
 
       <div class="container">
 
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <img class="img-responsive" src="http://placehold.it/700x450">
+          <div class="col-lg-12 pull-left">
+            <h2>depoimento <strong>de clientes</strong></h2>
+              <blockquote>
+                <p>Além de ótimos clientes a Fabricando Web hoje também é uma grande parceira da nossa empresa, de forma eficiente e objetiva captou nossas necessidades e desenvolveu todo o nosso site, o que aumentou de forma bem significativa o volume de vendas. Hoje sempre que precisamos desenvolver alguma ação de promoção para Marbek, contamos sempre com as ideias e novidades que eles nos sugerem. Uma grande parceria!</p></blockquote>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h2>Modern Business Features Include:</h2>
-            <ul>
-              <li>Bootstrap 3 Framework</li>
-              <li>Mobile Responsive Design</li>
-              <li>Predefined File Paths</li>
-              <li>Working PHP Contact Page</li>
-              <li>Minimal Custom CSS Styles</li>
-              <li>Unstyled: Add Your Own Style and Content!</li>
-              <li>Font-Awesome fonts come pre-installed!</li>
-              <li>100% <strong>Free</strong> to Use</li>
-              <li>Open Source: Use for any project, private or commercial!</li>
-            </ul>
-          </div>
+    
         </div><!-- /.row -->
 
       </div><!-- /.container -->
 
     </div><!-- /.section -->
 
-    <div class="container">
 
-      <div class="row well">
-        <div class="col-lg-8 col-md-8">
-          <h4>'Modern Business' is a ready-to-use, Bootstrap 3 updated, multi-purpose HTML theme!</h4>
-          <p>For more templates and more page options that you can integrate into this website template, visit Start Bootstrap!</p>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <a class="btn btn-lg btn-primary pull-right" href="http://startbootstrap.com">See More Templates!</a>
-        </div>
-      </div><!-- /.row -->
+    <div class="section contato">
 
-    </div><!-- /.container -->
+      <div class="container maps">
+          <div class="row venha center-block">
+            <h2>venha conhecer nossa empresa</h2>
+          </div>  
+          <div class="row maps center-block col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+              <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+              <style>
+                  html, body, #map-canvas {
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px
+                  }
+                </style>
+              <script type="text/javascript">
+                window.onload = function() {
+                    initialize();
+                }
+             
+                function initialize() {
+                    var myLatlng = new google.maps.LatLng(-20.786529,-48.332228);
+                    
+                    var myOptions = {
+                        zoom: 16,
+                        center: myLatlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP        }
+                     
+                    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-    <div class="container">
+                     
+                    var contentString = " descriçao balada";
+                     
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                     
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        icon: '../img/marcador.png',
+                        map: map,
+                        title: "Terra Night"
+                    });
 
-      <hr>
 
-      <footer>
-        <div class="row">
-          <div class="col-lg-12">
-            <p>Copyright &copy; Company 2013</p>
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(map,marker);
+                    });
+
+                    var styles = [{"featureType":"water","stylers":[{"color":"#46bcec"},{"visibility":"on"}]},{"featureType":"landscape","stylers":[{"color":"#f2f2f2"}]},{"featureType":"road","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]}];
+                  map.setOptions({styles: styles});
+                }
+            </script>
+              <div id="map_canvas" style="width:3000px;height:365px;" class="img-responsive" type="submit"></div>
           </div>
-        </div>
-      </footer>
 
-    </div><!-- /.container -->
+      </div><!-- /.container -->
 
+
+      <div class="container">
+        <footer>
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>entre em contato</h2>
+                <address>
+                  <strong>Av Jaime Ribeiro, 813 - Vila Industrial - Jaboticabal - SP</strong>
+                  <br>
+                  <abbr title="Telefone"><strong>Tel:</strong></abbr>(16) 3202-7979
+                  <strong>Email:</strong>
+                  <a href="mailto:sac@propartica.com.br">sac@propartica.com.br</a>
+                </address>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-lg-12 contact-form">
+              <form id="contact" method="post" class="form" role="form">
+                <div class="row">
+                  <div class="col-xs-6 col-md-6 form-group">
+                    <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required autofocus />      
+                  </div>
+                  <div class="col-xs-6 col-md-6 form-group">
+                    <input class="form-control" id="email" name="email" placeholder="Seu email" type="email" required />      
+                  </div>
+                </div>
+                <textarea class="form-control" id="message" name="message" placeholder="Sua Menssagem" rows="5"></textarea>
+                <br>      
+                <div class="row">
+                  <div class="col-xs-12 col-md-12 form-group">
+                    <button class="btn btn-primary pull-right" type="submit">Enviar Mensagem</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        
+        </footer>
+        
+      </div><!-- /.container -->      
+
+    </div><!-- /.section -->
+  
+    <div class="section rodape">
+
+      <div class="container">
+      
+        <ul class="list-inline pull-right">
+          <li>
+            <a href="#">home</a>
+          </li>
+          <li>
+            <a href="#">empresa</a>
+          </li>
+          <li>
+            <a href="#">serviços</a>
+          </li>
+          <li>
+            <a href="#">depoimentos</a>
+          </li>
+          <li>
+            <a href="#">fale conosco</a>
+          </li>
+        </ul>
+      
+      </div><!-- /.container -->      
+
+    </div><!-- /.section -->
+    
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/modern-business.js"></script>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=170974698005";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
   </body>
 </html>
