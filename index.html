@@ -13,8 +13,8 @@
 
     <!-- Add custom CSS here -->
     <link href="css/modern-business.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
   </head>
 
   <body>
@@ -34,39 +34,21 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <img src="img/topo.png" class="pull-right">
+          <img src="img/topo.png" class="pull-right invisible">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.php">Contact</a></li>
+            <li><a href="index.php">home</a></li>
+            <li><a href="sobre.php">empresa</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">serviços <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="portfolio-1-col.html">1 Column Portfolio</a></li>
-                <li><a href="portfolio-2-col.html">2 Column Portfolio</a></li>
-                <li><a href="portfolio-3-col.html">3 Column Portfolio</a></li>
-                <li><a href="portfolio-4-col.html">4 Column Portfolio</a></li>
-                <li><a href="portfolio-item.html">Single Portfolio Item</a></li>
+                <li><a href="javascript:void(0)">Portaria</a></li>
+                <li><a href="javascript:void(0)">Limpeza</a></li>
+                <li><a href="javascript:void(0)">Jardinagem</a></li>
+                <li><a href="javascript:void(0)">Motorista particular</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="blog-home-1.html">Blog Home 1</a></li>
-                <li><a href="blog-home-2.html">Blog Home 2</a></li>
-                <li><a href="blog-post.html">Blog Post</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="full-width.html">Full Width Page</a></li>
-                <li><a href="sidebar.html">Sidebar Page</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="404.html">404</a></li>
-                <li><a href="pricing.html">Pricing Table</a></li>
-              </ul>
-            </li>
+            <li><a href="depoimentos.php">depoimentos</a></li>
+            <li><a href="contato.php">fale conosco</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
@@ -117,11 +99,11 @@
 
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <h1>Buscando excelência em prestação de serviços</h1>
+            <h1>buscando excelência em prestação de serviços</h1>
             <hr>
           </div>
 
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left servicos">
             <h2>serviços</h2>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 portifolio-item">
               <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
@@ -162,12 +144,12 @@
     </div><!-- /.section -->
 
 
-    <div class="section menssegerbox">
+    <div class="section menssegerbox container">
 
       <div class="container">
         
         <div class="row">
-          <h2>depoimento <strong>de clientes</strong></h2>
+          <h2 class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">depoimento <strong>de clientes</strong></h2>
         </div><!-- /.row -->
 
       </div><!-- /.container -->
@@ -176,11 +158,13 @@
         
         <div class="row">
 
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left well">
-              <img src="../img/fototeste.png" class="img-responsive pull-left">  
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-lg-10 col-md-10 col-sm-11 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 well">
+              <img src="img/fototeste.png" class="img-responsive pull-left">  
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 inicio-aspas"></div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
                   <p>Além de ótimos clientes a Fabricando Web hoje também é uma grande parceira da nossa empresa, de forma eficiente e objetiva captou nossas necessidades e desenvolveu todo o nosso site, o que aumentou de forma bem significativa o volume de vendas. Hoje sempre que precisamos desenvolver alguma ação de promoção para Marbek, contamos sempre com as ideias e novidades que eles nos sugerem. Uma grande parceria!</p> 
                 </div>       
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 fim-aspas"></div>
             </div>
            </div>
     
@@ -217,7 +201,7 @@
                     var myLatlng = new google.maps.LatLng(-20.786529,-48.332228);
                     
                     var myOptions = {
-                        zoom: 16,
+                        zoom: 18,
                         center: myLatlng,
                         mapTypeId: google.maps.MapTypeId.ROADMAP        }
                      
@@ -232,7 +216,7 @@
                      
                     var marker = new google.maps.Marker({
                         position: myLatlng,
-                        icon: '../img/marcador.png',
+                        icon: 'img/marcador.png',
                         map: map,
                         title: "PróPratica"
                     });
@@ -255,7 +239,7 @@
       <div class="container">
         <footer>
             <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
                 <h2>entre em contato</h2>
                 <address>
                   <strong>Av Jaime Ribeiro, 813 - Vila Industrial - Jaboticabal - SP</strong>
@@ -267,21 +251,21 @@
               </div>
             </div>
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-form">
+            <div class='class="col-lg-10 col-md-10 col-sm-12 col-xs-12 contact-form col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0'>
               <form id="contact" method="post" class="form" role="form">
                 <div class="row">
                   <div class="col-xs-6 col-md-6 form-group">
-                    <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required />      
+                    <input class="form-control input-lg" id="name" name="name" placeholder="Nome" type="text" required />      
                   </div>
                   <div class="col-xs-6 col-md-6 form-group">
-                    <input class="form-control" id="email" name="email" placeholder="Seu email" type="email" required />      
+                    <input class="form-control input-lg" id="email" name="email" placeholder="Seu email" type="email" required />      
                   </div>
                 </div>
-                <textarea class="form-control" id="message" name="message" placeholder="Sua Menssagem" rows="5"></textarea>
+                <textarea class="form-control input-lg" id="message" name="message" placeholder="Sua Menssagem" rows="5"></textarea>
                 <br>      
                 <div class="row">
                   <div class="col-xs-12 col-md-12 form-group">
-                    <button class="btn btn-primary pull-right" type="submit">Enviar Mensagem</button>
+                    <button class="btn btn-primary center-block" type="submit">Enviar Mensagem</button>
                   </div>
                 </div>
               </form>
@@ -319,7 +303,6 @@
       </div><!-- /.container -->      
 
     </div><!-- /.section -->
-    
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>

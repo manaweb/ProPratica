@@ -20,7 +20,7 @@ html,body
 
 }
 
-* {
+body * {
 font-family:'century_gothicregular';
 }
 
@@ -72,7 +72,7 @@ font-family:'century_gothicregular';
 }
 
 .nav > li > a {
-    color: #003366;
+    color: #8C8C8C;
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -137,7 +137,35 @@ some cases may stretch layouts. So, we're just hiding it.
 }
 
 .menssegerbox {
-    background: url("../img/menssegerbox.png") repeat scroll 50% 50% rgba(0, 0, 0, 0);
+    background: url("../img/menssegerbox.png") center no-repeat scroll rgba(0, 0, 0, 0);
     padding: 4% 0 6% 0;
 }
 
+.servicos h3{
+    color: #999999;
+}
+footer * {
+    color: #FFF;
+}
+footer .input-lg{
+    border-radius: 0px;
+    background-color: #275E8F;
+    color: #9BB5CB;
+    border-color: rgba(0, 0, 0, 0)
+}
+.navbar .container{
+    background: url(../img/topo.png) right top no-repeat;
+}
+ul.nav{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.inicio-aspas{
+    background: url(../img/inicio-aspas.png) top no-repeat;
+    min-height: 21px;
+}
+.fim-aspas{
+    background: url(../img/fim-aspas.png) bottom no-repeat;
+    min-height: 21px;
+}
