@@ -1,0 +1,143 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html,body
+{
+  height: 100%;
+}
+
+@font-face {
+    font-family: 'century_gothicregular';
+    src: url('../fonts/century_gothic/century_gothic-webfont.eot');
+    src: url('../fonts/century_gothic/century_gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/century_gothic/century_gothic-webfont.woff') format('woff'),
+         url('../fonts/century_gothic/century_gothic-webfont.ttf') format('truetype'),
+         url('../fonts/century_gothic/century_gothic-webfont.svg#century_gothicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+* {
+font-family:'century_gothicregular';
+}
+
+.carousel-caption {
+    padding-bottom: 10%;
+    position: absolute;
+    left: 20%;
+    text-align: left;
+}
+
+.carousel-indicators {
+	top: 102%;	
+}
+
+.carousel-indicators li {
+    border: 1px solid #666666;
+    width: 15px;
+    height: 15px;
+}
+
+.carousel-indicators .active {
+    background-color: #666666;
+    width: 16px;
+    height: 16px;
+}
+
+.well {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 0;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0) inset;
+    margin-bottom: 0;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+}
+
+.dropdown-menu {
+    background-color: #006699;
+}
+
+.dropdown-menu > li > a {
+     color: #FFFFFF;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #006699;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.nav > li > a {
+    color: #003366;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #003366;
+    color: #FFFFFF;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #003366;
+    border-color: none;
+}
+
+/* 
+Make the Facebook Like box responsive (fluid width)
+https://developers.facebook.com/docs/reference/plugins/like-box/ 
+*/
+
+/* 
+This element holds injected scripts inside iframes that in 
+some cases may stretch layouts. So, we're just hiding it. 
+*/
+
+#fb-root {
+    display: none;
+}
+
+/* To fill the container and nothing else */
+
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+
+.maps {
+	padding: 0px;
+	width:100%;
+}
+
+.venha {
+	background:none repeat scroll 0 0 #0099CB;
+}
+
+.venha-title {
+    position: inherit;
+    right: 65px;
+}
+
+.contato {
+	background:none repeat scroll 0 0 #3072AF;
+	padding: 0px;
+}
+
+.rodape {
+	background:none repeat scroll 0 0 #003366;
+	padding: 10px;
+}
+
+.portifolio-item {
+    margin: 0px;
+    padding: 0px;
+}
+
+.menssegerbox {
+    background: url("../img/menssegerbox.png") repeat scroll 50% 50% rgba(0, 0, 0, 0);
+    padding: 4% 0 6% 0;
+}
+
