@@ -109,7 +109,8 @@ some cases may stretch layouts. So, we're just hiding it.
 
 .maps {
 	padding: 0px;
-	width:100%;
+	max-width:100%;
+    width: 100%;
 }
 
 .venha {
@@ -157,7 +158,7 @@ footer .input-lg{
     background: url(../img/topo.png) right top no-repeat;
 }
 ul.nav{
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
 }
 
@@ -226,11 +227,15 @@ ul.nav{
 }
 .fancybox-wrap{
     border: 15px solid rgba(0,0,0,0.5) !important;
+    width: 100%;
 }
 .fancybox-close {
     background-image: url(../img/fancy-close.png) !important;
     margin-top: -33px;
     right: -15px !important;
+}
+.fancybox-inner{
+    width: 100% !important;
 }
 .servico-hidden.show {
     position: absolute;
@@ -267,4 +272,16 @@ address, .facebook-icon {
 }
 .contact-form {
     padding: 0;
+}
+.section-initial{
+    padding-top: 0;
+}
+.open-map{
+    cursor: pointer;
+}
+.collapse.navbar-collapse.navbar-ex1-collapse.visible-xs {
+    display: none !important;
+}
+.navbar-collapse{
+    overflow: hidden;
 }
