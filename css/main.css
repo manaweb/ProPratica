@@ -120,6 +120,7 @@ some cases may stretch layouts. So, we're just hiding it.
 .venha-title {
     position: inherit;
     color: #FFF;
+    padding: 10px 0;
 }
 
 .contato {
@@ -158,7 +159,7 @@ footer .input-lg{
     background: url(../img/topo.png) right top no-repeat;
 }
 ul.nav{
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
@@ -225,18 +226,6 @@ ul.nav{
     color: #FFF;
     background-color: #83B100;
 }
-.fancybox-wrap{
-    border: 15px solid rgba(0,0,0,0.5) !important;
-    width: 100%;
-}
-.fancybox-close {
-    background-image: url(../img/fancy-close.png) !important;
-    margin-top: -33px;
-    right: -15px !important;
-}
-.fancybox-inner{
-    width: 100% !important;
-}
 .servico-hidden.show {
     position: absolute;
     top: 0;
@@ -256,6 +245,9 @@ ul.nav{
     background-color: #FFF;
     color: #83B100;
 }
+.solicite {
+    color: #83B100;
+}
 .quotes-lg {
     font-size: 5em;
     font-family: "times new roman";
@@ -269,6 +261,7 @@ address, .facebook-icon {
 }
 .facebook-icon {
     margin-bottom: 15px;
+    padding: 0;
 }
 .contact-form {
     padding: 0;
@@ -308,9 +301,13 @@ address, .facebook-icon {
     .scroll-pane {
         height: 380px;
     }
-}*/
+}
+@media(min-height: 992px){
+    .scroll-pane{
+        height: 550px;
+    }
+}
 .scroll-pane {
-    height: 500px;
     width: 100%;
     overflow: auto;
 }
@@ -341,15 +338,26 @@ address, .facebook-icon {
 }
 .modal-dialog .modal-close:hover, .modal-dialog .modal-close:active {text-decoration: none}
 
-.title-gray {
-    color: #BBB;
+.modal-dialog{
+    margin-top: 5%;
 }
+
+.title-gray {
+    color: #666;
+    text-align: left;
+}
+address{
+    padding: 0 !important;
+    }
 
 @media(max-width: 767px){
     .servicos.col-xs-12, .portifolio-item.col-xs-12 {
-        width: 324px;
+        max-width: 324px;
         float: none !important;
         margin: auto;
+    }
+    .topo-contato{
+        padding: 0;
     }
 }
 @media(min-width: 768px){
@@ -369,6 +377,18 @@ address, .facebook-icon {
         margin: -3px -2px !important;
         padding: 0px;
     }
+    #mapa{
+        display: block !important;
+    }
+    .topo-contato{
+        padding-left: 0;
+        padding-right: 8px;
+        font-size: 1.6em;
+    }
+    .topo-contato h2 {
+        font-size: 1.7em;
+    }
+
 }
 
 @media(min-width: 1200px){
@@ -390,12 +410,36 @@ address, .facebook-icon {
     }
     .div-buscando{
         background: url(../img/barra.png) center repeat-x;
-        margin-top: 50px;
+        margin-top: 70px;
+        margin-bottom: 50px;
     }
     .buscando{
         background-color: #FFF;
         display: inline;
         padding: 0 8px;
     }
+    .menu > li{
+        margin: -5px;
+    }
+    .menu{
+        margin-top: 20px;
+        margin-right: -40px !important;
+    }
+    .scroll-pane {
+        min-height: 500px;
+    }
 
+}
+
+.texto-servico p {
+    max-width: 95%;
+    text-align: justify;
+}
+.horizontal-only
+{
+    height: auto;
+    max-height: 200px;
+}
+.jspHorizontalBar{
+   /* display: none !important;*/
 }
