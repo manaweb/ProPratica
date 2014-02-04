@@ -1,4 +1,9 @@
-  <!DOCTYPE html>
+<?php
+  include("php/config/config.php");
+  include("painel/includes/BancoDeDados.php");
+  $conexao = db_conectar();
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -41,11 +46,11 @@
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-portaria">Portaria</a></li>
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-limpeza">Limpeza</a></li>
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-apoio">Apoio</a></li>
-                  <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-motorista">Motorista particular</a></li>
+                  <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-motorista">Motorista Particular</a></li>
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-temporarios">Serviços Temporários</a></li>
                 </ul>
               </li>
-              <li><a href="depoimentos.php">depoimentos</a></li>
+              <li><a href="#depoimentos" class="goTo">depoimentos</a></li>
               <li><a href="javascript:void(0)" class="fale-conosco">fale conosco</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -65,11 +70,11 @@
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-portaria">Portaria</a></li>
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-limpeza">Limpeza</a></li>
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-apoio">Apoio</a></li>
-                  <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-motorista">Motorista particular</a></li>
+                  <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-motorista">Motorista Particular</a></li>
                   <li><a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-temporarios">Serviços Temporários</a></li>
                 </ul>
               </li>
-              <li><a href="depoimentos.php">depoimentos</a></li>
+              <li><a href="#depoimentos" class="goTo">depoimentos</a></li>
               <li><a href="javascript:void(0)" class="fale-conosco">fale conosco</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -80,26 +85,40 @@
     
       <div id="myCarousel" class="carousel slide hidden-xs">
           <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="fill" style="background-image:url('img/background1.png');"></div>
-              <div class="carousel-caption">
-                <h1>Sua vida mais<br>prática e produtiva</h1>
-              </div>
-            </div>
-          </div>
-
-          <!-- Controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-          </a>
-      <!-- Carousel Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      </ol>
+        <div class="carousel-inner">
+          <?php
+            $sql = "select * from tbpublicidade order by id_publicidade desc";
+            $result = mysql_query($sql);
+            $qtdBanners = mysql_num_rows($result);
+            $active = 'active';
+            while($dadosBanner = mysql_fetch_assoc($result)){
+              echo '
+                <div class="item '.$active.'">
+                  <div class="fill" style="background-image:url(painel/arquivos/banner/'.$dadosBanner['arquivo'].');"></div>
+                </div>';
+              $active = "";
+            }
+          ?>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+        </a>
+        <!-- Carousel Indicators -->
+        <ol class="carousel-indicators">
+          <?php
+            $active = 'class="active"';
+            for($i = 0; $i < $qtdBanners; $i++){
+              echo '<li data-target="#myCarousel" data-slide-to="'.$i.'" '.$active.'></li>';
+              $active = "";
+            }
+          ?>
+          
+        </ol>
+      </div>
     </div>
 
     <div class="section section-initial">
@@ -112,8 +131,17 @@
             <hr class="hidden-lg hidden-sm">
           </div>
 
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left servicos">
+          <div id="servicos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left servicos">
             <h2 class="title-gray">serviços</h2>
+            <?php
+              $sql = "select * from servicos order by id asc";
+              $result = mysql_query($sql);
+              $servicos = array();
+              for($i = 0; $dadosBanner = mysql_fetch_assoc($result); $i++){
+                $servicos[$i]['tipo'] = $dadosBanner['tipo'];
+                $servicos[$i]['texto'] = $dadosBanner['texto'];
+              }
+            ?>
             <!-- serviço -->
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 portifolio-item">
               <a href="javascript:void(0)" data-toggle="modal" data-target="#servicos-motorista"><img class="img-responsive img-home-portfolio" src="img/foto1.jpg"><img src='img/plus.png' class='img-plus-portfolio'></a>
@@ -129,9 +157,9 @@
                     <div class="scroll-pane">
                       <p>
                         <img src="img/servicos-motorista.jpg" alt="Motorista Particular" class="img-responsive">
-                        <h2>Motorista Particular</h2>
+                        <h2><?=utf8_encode($servicos[0]['tipo'])?></h2>
                           <div class="texto-servico">
-                            <p>A PROPRÁTICA SERVIÇOS leva você a eventos, reuniões, aeroportos e outras cidades com segurança e descrição.<br>Fazemos serviços dentro da cidade como levar ao supermercado, farmácia, cabeleireiro, escola e outros.<br>Nossos colaboradores trabalham com descrição e profissionalismo</p>
+                            <?=utf8_encode($servicos[0]['texto'])?>
                           </div>
                         <h2 class="text-center solicite"><strong>Solicite</strong> um Orçamento</h2>
                         <div class="text-center"><a href="javascript:void(0)" class="btn btn-default">clique aqui</a></div>
@@ -157,9 +185,9 @@
                     <div class="scroll-pane">
                       <p>
                         <img src="img/servicos-apoio.jpg" alt="Serviços de Apoio" class="img-responsive">
-                        <h2>Serviços de Apoio</h2>
+                        <h2><?=utf8_encode($servicos[1]['tipo'])?></h2>
                         <div class="texto-servico">
-                          <p>Toda empresa precisa focar em suas atividades fim e acaba deixando de lado sua recepção e atendimento, que são áreas porta de entrada do seu negócio.<br>Não é mais preciso preocupar-se com isso, a PROPRÁTICA SERVIÇOS tem recepcionista, telefonistas e secretárias para atendê-lo e fazer de sua empresa ainda mais produtiva.</p>
+                          <?=utf8_encode($servicos[1]['texto'])?>
                         </div>
                         <h2 class="text-center solicite"><strong>Solicite</strong> um Orçamento</h2>
                         <div class="text-center"><a href="javascript:void(0)" class="btn btn-default">clique aqui</a></div>
@@ -172,7 +200,7 @@
 
             <!-- .serviço -->
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 portifolio-item portifolio-item-solicitar">
-              <span><img class="img-responsive img-home-portfolio invisible" src="http://placehold.it/324x221"></span>
+              <span><img class="img-responsive img-home-portfolio invisible" src="324x221.gif"></span>
               <div class="servico-hidden show center-block hidden-xs hidden-sm">
                 <h1 class="text-center solicite-lg"><strong>Solicite</strong> um Orçamento</h1>
                 <div class="text-center"><a href="javascript:void(0)" class="btn btn-default">clique aqui</a></div>
@@ -201,16 +229,9 @@
                     <div class="scroll-pane">
                       <p>
                         <img src="img/servicos-portaria.jpg" alt="Portaria" class="img-responsive">
-                        <h2>Portaria</h2>
+                        <h2><?=utf8_encode($servicos[2]['tipo'])?></h2>
                         <div class="texto-servico">
-                          <p>Profissionais qualificados e treinados, com cursos de atendimento ao público, relação interpessoal, primeiros socorros e segurança do trabalho.<br>
-                            A PROPRÁTICA SERVIÇOS traz confiabilidade e praticidade para o cotidiano das empresas e condomínios através de excelência dos serviços prestados.Desenvolvemos projetos de portaria e monitoramento para condomínios.<br>
-                            Rotinas e procedimentos desenvolvidos pela portaria.· Entrada e saída de pessoas;· Entrada e saída de veículo.<br>
-                            <br>
-                            · Controle de entrada e saída de mercadorias e bens da empresa; <br>
-                            · Controle de entradas de notas fiscais;· Controle de envio e recebimento de correspondências;<br>
-                            · Controle de entrada e saída de visitantes;<br>
-                            · Monitoramento a distancia.</p>
+                          <?=utf8_encode($servicos[2]['texto'])?>
                         </div>
                         <h2 class="text-center solicite"><strong>Solicite</strong> um Orçamento</h2>
                         <div class="text-center"><a href="javascript:void(0)" class="btn btn-default">clique aqui</a></div>
@@ -236,9 +257,9 @@
                     <div class="scroll-pane">
                       <p>
                         <img src="img/servicos-limpeza.jpg" alt="Serviços de Limpeza" class="img-responsive">
-                        <h2>Limpeza e conservação</h2>
+                        <h2><?=utf8_encode($servicos[3]['tipo'])?></h2>
                         <div class="texto-servico">
-                          <p>Com uma seleção rigorosa e minuciosa contratamos profissionais da limpeza que garante a qualidade dos serviços por passarem por treinamentos de conduta e específico de limpeza em geral.<br>Trabalhamos com salas comerciais, empresas e até limpeza industrial. Fazemos limpezas em escolas e universidades utilizando um sistema especializado em rotinas de serviços, para que tudo fique limpo e organizado sem influenciar no fluxo de alunos.<br>Estamos com uma nova área de limpeza, são as de laboratórios. Profissionais treinados e com curso de segurança e boas práticas de laboratório.</p>
+                          <?=utf8_encode($servicos[3]['texto'])?>
                         </div>
                         <h2 class="text-center solicite"><strong>Solicite</strong> um Orçamento</h2>
                         <div class="text-center"><a href="javascript:void(0)" class="btn btn-default">clique aqui</a></div>
@@ -264,12 +285,9 @@
                     <div class="scroll-pane">
                       <p>
                         <img src="img/servicos-temporarios.jpg" alt="Serviços Temporários" class="img-responsive">
-                        <h2>Serviços Temporários</h2>
+                        <h2><?=utf8_encode($servicos[4]['tipo'])?></h2>
                         <div class="texto-servico">
-                          <p>Fazemos portaria, recepção e limpeza de banheiros e do local de eventos como: casamentos, aniversários, shows, formaturas, festas de confraternização e outros.<br>
-                            <br>Terceirizamos colaboradores para substituição de férias e afastamentos ou quaisquer eventos extraordinários que aconteça em sua empresa.<br>
-                            <br>
-                            Equipe treinada para substituir e executar o serviço com qualidade.<br></p>
+                          <?=utf8_encode($servicos[4]['texto'])?>
                         </div>
                         <h2 class="text-center solicite"><strong>Solicite</strong> um Orçamento</h2>
                         <div class="text-center"><a href="javascript:void(0)" class="btn btn-default">clique aqui</a></div>
@@ -302,7 +320,7 @@
     </div><!-- /.section -->
 
 
-    <div class="section menssegerbox container">
+    <div id="depoimentos" class="section container">
 
       <div class="container">
         
@@ -310,24 +328,61 @@
           <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title-gray">depoimento <strong>de clientes</strong></h2>
         </div><!-- /.row -->
 
-      <!-- </div><!-- /.container --
+      <!-- </div><!-- /.container -
 
       <div class="container"> -->
         
-        <div class="row">
+        <div class="row menssegerbox">
 
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-1 well">
-              <img src="img/fototeste.png" class="img-responsive pull-left">  
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                  <p><span class="quotes-lg">&ldquo;</span>Além de ótimos clientes a Fabricando Web hoje também é uma grande parceira da nossa empresa, de forma eficiente e objetiva captou nossas necessidades e desenvolveu todo o nosso site, o que aumentou de forma bem significativa o volume de vendas. Hoje sempre que precisamos desenvolver alguma ação de promoção para Marbek, contamos sempre com as ideias e novidades que eles nos sugerem. Uma grande parceria!<span class="quotes-lg pull-right">&rdquo;</span></p> 
+            <img src="img/fototeste.png" class="img-responsive pull-left">  
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+              <p><span class="quotes-lg">&ldquo;</span>Além de ótimos clientes a Fabricando Web hoje também é uma grande parceira da nossa empresa, de forma eficiente e objetiva captou nossas necessidades e desenvolveu todo o nosso site, o que aumentou de forma bem significativa o volume de vendas. Hoje sempre que precisamos desenvolver alguma ação de promoção para Marbek, contamos sempre com as ideias e novidades que eles nos sugerem. Uma grande parceria!<span class="quotes-lg pull-right">&rdquo;</span></p> 
+            </div>
+          </div>
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-lg-12 no-padding">
+            <button class="pull-right btn btn-primary btn-open-cadastro" type="button">Cadastrar Depoimento</button>
+          </div>
+        </div><!-- /.row -->
+        <div class="row depoimento-hidden">
+          <div class='col-lg-10 col-md-10 col-sm-12 col-xs-10 depoimento-form col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-1'>
+            <form class="depoimento-form form" role="form">
+              <div class="row">
+                <div class="col-xs-12 col-md-4 form-group">
+                  <label for="name">nome:</label>
+                  <input class="form-control input-lg" id="name" name="name" placeholder="" type="text" required />      
+                </div>
+                <div class="col-xs-12 col-md-4 form-group">
+                  <label for="empresa">empresa:</label>
+                  <input class="form-control input-lg" id="empresa" name="empresa" placeholder="" type="text" required />      
+                </div>
+                <div class="col-xs-12 col-md-4 form-group">
+                  <label for="empresa">cargo:</label>
+                  <input class="form-control input-lg" id="cargo" name="cargo" placeholder="" type="text" required />      
+                </div>
+              </div>
+              <label for="empresa">mensagem:</label>
+              <textarea class="form-control input-lg" id="message" name="message" placeholder="" rows="8"></textarea>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                <input id="uploadFile" placeholder="" disabled="disabled" class="txtUpload btn"/>
+                <div class="fileUpload btn btn-primary">
+                    <span>Selecione uma imagem</span>
+                    <input id="uploadBtn" type="file" class="upload" />
                 </div>
             </div>
-           </div>
-    
-        </div><!-- /.row -->
+              <br>      
+              <div class="row">
+                <div class="col-xs-12 col-md-12 form-group">
+                  <button class="btn btn-primary btn-cadastrar-depoimento" type="submit">enviar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
 
       </div><!-- /.container -->
-
     </div><!-- /.section -->
 
 
@@ -419,7 +474,7 @@
             </div>
           <div class="row">
             <div class='col-lg-10 col-md-10 col-sm-12 col-xs-10 contact-form col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-1'>
-              <form id="contact" method="post" class="form" role="form">
+              <form id="contact" class="form" role="form">
                 <div class="row">
                   <div class="col-xs-6 col-md-6 form-group">
                     <input class="form-control input-lg" id="name" name="name" placeholder="Nome" type="text" required />      
@@ -432,7 +487,11 @@
                 <br>      
                 <div class="row">
                   <div class="col-xs-12 col-md-12 form-group">
-                    <button class="btn btn-primary center-block" type="submit">Enviar Mensagem</button>
+                    <button class="btn btn-primary center-block btn-enviar" type="button">Enviar Mensagem</button>
+                  </div>
+                  <div class="col-xs-12 col-md-12 form-group">
+                    <div class="alert alert-success alert-contato">Mensagem enviada com sucesso</div>
+                    <div class="alert alert-danger alert-contato"></div>
                   </div>
                 </div>
               </form>
@@ -457,13 +516,13 @@
             <a href="#">empresa</a>
           </li>
           <li>
-            <a href="#">serviços</a>
+            <a href="#servicos" class="goTo">serviços</a>
           </li>
           <li>
-            <a href="#">depoimentos</a>
+            <a href="#depoimentos" class="goTo">depoimentos</a>
           </li>
           <li>
-            <a href="#">fale conosco</a>
+            <a href="javascript:void(0)" class="fale-conosco">fale conosco</a>
           </li>
         </ul>
       
@@ -480,44 +539,49 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="screen" /> -->
     <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
     <script type="text/javascript">
+      document.getElementById("uploadBtn").onchange = function () {
+        document.getElementById("uploadFile").value = this.value;
+      }
       $(function(){
-        // var settings = {
-        //   top: 0,
-        //   left: 0,
-        //   opacity: 1
-        // };
-        // var alturaItem = 0;
-        // var larguraItem = 0;
-        // $(".portifolio-item a").hover(function(){
-        //   alturaItem = $('.img-home-portfolio',this).height();
-        //   larguraItem = $('.img-home-portfolio',this).width();
-        //   settings.top = (alturaItem/2) - 20+'px';
-        //   settings.left = (larguraItem/2) - 24.5+'px';
-        //   settings.opacity = 1;
-        //   $('.img-plus-portfolio',this).animate(settings,500);
-        // },function() {
-        //   settings.top = settings.left = settings.opacity = 0;
-        //   $('.img-plus-portfolio',this).css(settings);
-        // });
-
-        // $(".portifolio-item a, .open-map").fancybox({
-        //   type: 'inline',
-        //   margin: [37,0,0,0],
-        //   scrolling: 'visible',
-        //   autoSize: true,
-        //   fitToView: true,
-        //   width: 'auto',
-        //   'max-width': '100%'
-        // });
-        // $(".portifolio-item a").click(function(){
-        //   fancybox.open();
-        //   return false;
-        // });
-
         $('.scroll-pane').jScrollPane({autoReinitialise: true, contentWidth: '0px'});
 
         $(".fale-conosco").click(function(){
           $("html, body").animate({scrollTop: $(document).height() + 'px'},500);  
+        })
+
+        $(".goTo").click(function(){
+          scrollToID($(this).attr('href'),500);
+          return false;
+        });
+
+        function scrollToID(id, speed){
+          var offSet = 50;
+          var targetOffset = $(id).offset().top - offSet;
+          // var mainNav = $('#main-nav');
+           $('html,body').animate({scrollTop:targetOffset}, speed);
+          // if (mainNav.hasClass("open")) {
+          //   mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+          //   mainNav.removeClass("open");
+          // }
+        }
+        if (typeof console === "undefined") {
+            console = {
+                log: function() { }
+            };
+        }
+
+        $(".btn-enviar").click(function(){
+          $("#contact .form-control, #contact btn").attr("disabled");
+          $.post('enviar-email.php',$('#contact').serialize(),function(html) {
+            if(html){
+              $("#contact .form-control").val("");
+              $("#contact .alert-contato.alert-success").fadeIn("fast");
+            }
+          });
+        })
+
+        $(".btn-open-cadastro").click(function(){
+          $(".depoimento-hidden").slideToggle(400);
         })
       });
     </script>

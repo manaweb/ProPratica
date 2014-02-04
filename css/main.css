@@ -22,6 +22,11 @@ html,body
 
 body * {
 font-family:'century_gothicregular';
+outline: none;
+}
+
+.no-padding{
+    padding: 0 !important;
 }
 
 .carousel-caption {
@@ -140,7 +145,6 @@ some cases may stretch layouts. So, we're just hiding it.
 
 .menssegerbox {
     background: url("../img/menssegerbox.png") center no-repeat scroll rgba(0, 0, 0, 0);
-    padding: 4% 0 6% 0;
 }
 
 .servicos h3{
@@ -388,6 +392,10 @@ address{
     .topo-contato h2 {
         font-size: 1.7em;
     }
+    .navbar-right .dropdown-menu {
+        left: 0;
+        right: auto;
+    }
 
 }
 
@@ -431,7 +439,7 @@ address{
 
 }
 
-.texto-servico p {
+.texto-servico {
     max-width: 95%;
     text-align: justify;
 }
@@ -442,4 +450,67 @@ address{
 }
 .jspHorizontalBar{
    /* display: none !important;*/
+}
+
+.btn-primary.btn-open-cadastro, .btn-cadastrar-depoimento{
+    background-color: #83B100;
+    border-radius: 0;
+    border-color: #83B100;
+    margin-top: 15px;
+}
+.depoimento-form .form-control:focus {
+  border-color: #99D6D6;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(153, 214, 214, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(153, 214, 214, 0.6);
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    border-radius: 0;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.txtUpload.btn{
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+}
+.depoimento-hidden{
+    display: none;
+}
+.alert-contato{
+    display: none;
+    margin-top: 25px;
+}
+.btn-cadastrar-depoimento {
+    color: #83B100;
+    background-color: #FFF;
+    border-color: #83B100;
+}
+.btn-cadastrar-depoimento:hover {
+    background-color: #83B100;
+    border-radius: 0;
+    border-color: #83B100;
+    margin-top: 15px;
 }
