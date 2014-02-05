@@ -363,6 +363,11 @@ address{
     .topo-contato{
         padding: 0;
     }
+    .btn-open-cadastro{
+        float: none !important;
+        display: block;
+        margin: auto;
+    }
 }
 @media(min-width: 768px){
     .servicos.col-sm-6, .portifolio-item.col-sm-6 {
@@ -513,4 +518,21 @@ address{
     border-radius: 0;
     border-color: #83B100;
     margin-top: 15px;
+}
+.form-group .checkbox-inline:first-child{
+    margin-left: 10px;
+}
+.orcamento-form label{
+    color: #58585A;
+    text-align: left !important;
+}
+.orcamento-form h2{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px 0 40px 0;
+}
+.loader{
+    display: none;
+    width: 50px;
+    height: auto;
 }
