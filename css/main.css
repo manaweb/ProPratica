@@ -21,12 +21,12 @@ html,body
 }
 
 body * {
-font-family:'century_gothicregular';
-outline: none;
+    font-family:'century_gothicregular';
+    outline: none;
 }
 
 .no-padding{
-    padding: 0 !important;
+   padding: 0 !important;
 }
 
 .carousel-caption {
@@ -447,6 +447,8 @@ address{
 .texto-servico {
     max-width: 95%;
     text-align: justify;
+    position: relative;
+    z-index: 999999999999999999999999999;
 }
 .horizontal-only
 {
@@ -535,4 +537,8 @@ address{
     display: none;
     width: 50px;
     height: auto;
+}
+.mensagem-envio{
+    text-align: center;
+    margin-top: 20px;
 }

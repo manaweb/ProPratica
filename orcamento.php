@@ -95,28 +95,28 @@
 					    	<label for="nome" class="col-sm-3 control-label">Serviço: </label>
 						    <div class="col-sm-9">
 						      	<label class="checkbox-inline">
-								  	<input type="checkbox" id="" value="Limpeza e conservação"> Limpeza e conservação
+								  	<input type="checkbox" id="" name="servico" value="Limpeza e conservação"> Limpeza e conservação
 								</label>
 								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox2" value="option2"> Portaria
+								  	<input type="checkbox" id="" name="servico" value="Portaria"> Portaria
 								</label>
 								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> Recepção
+								  	<input type="checkbox" id="" name="servico" value="Recepção"> Recepção
 								</label>
 								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> Manutenção Predial
+								  	<input type="checkbox" id="" name="servico" value="Manutenção Predial"> Manutenção Predial
 								</label>
 								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> Jardinagem
+								  	<input type="checkbox" id="" name="servico" value="Jardinagem"> Jardinagem
 								</label>
 								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> Escritório
+								  	<input type="checkbox" id="" name="servico" value="Escritório"> Escritório
 								</label>
 								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> Administração de Condomínios
+								  	<input type="checkbox" id="" name="servico" value="Administração de Condomínios"> Administração de Condomínios
 								</label>
 								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> Outros Serviços
+								  	<input type="checkbox" id="" name="servico" value="Outros Serviços"> Outros Serviços
 								</label>
 						    </div>
 					  	</div>

@@ -185,7 +185,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h2  class="title-gray">siga-nos no <strong>Facebook</strong></h2>
-            <div class="fb-like-box" data-href="http://www.facebook.com/FacebookDevelopers" data-width="auto" data-height="auto" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
+            <div class="fb-like-box" data-href="https://www.facebook.com/pages/Propr%C3%A1tica/1393255317602838" data-width="auto" data-height="auto" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
           </div>
 
         </div><!-- /.row -->

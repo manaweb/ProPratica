@@ -185,23 +185,25 @@
         }
 
         $("#contact, .depoimento-form, .orcamento-form").submit(function(){
+          var dados = $(this).serialize();
           $(".loader").show();
-          $("input, .btn, select", this).attr("disabled", 'disabled');
+          $("input, .btn, select, textarea", this).attr("disabled", 'disabled');
           var action = $(this).attr("action");
           // $.post(action, $(this).serialize(),function(data) {
           $.ajax({
             type: "post",
-            dataType: 'json',
-            data: $(this).serialize(),
+            dataType: "json",
+            data: dados,
             url: action,
             success: function(data){
               if(data.tipo == "success"){
-                var alerta = '<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 form-group text-center"><div class="alert alert-'+data.tipo+' alert-contato col-lg-6 col-lg-offset-3">Mensagem enviada com sucesso</div></div>';
-                $("input, .btn", this).val("");
-                $(".mensagem-envio").html(alerta);
+                var alerta = '<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 form-group text-center"><div class="alert alert-'+data.tipo+' alert-contato alert-dismissable col-lg-6 col-lg-offset-3">Mensagem enviada com sucesso</div></div>';
+                $("input, .btn, textarea", this).val("");
+                $(".loader").hide();
+                $(".mensagem-envio").append(alerta);
                 $(".mensagem-envio .alert").fadeIn();
                 $(".alert-contato.alert-success", this).fadeIn("fast");
-                $("input, .btn", this).removeAttr("disabled");
+                $("input, .btn, textarea", this).removeAttr("disabled");
               }else{
                 alert('erro');
               }
