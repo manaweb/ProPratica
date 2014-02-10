@@ -197,7 +197,7 @@
 
     <div id="depoimentos" class="section container">
 
-      <div class="container">
+      <div class="container menssegerbox">
         
         <div class="row">
           <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title-gray">depoimento <strong>de clientes</strong></h2>
@@ -207,27 +207,41 @@
 
       <div class="container"> -->
         
-        <div class="row menssegerbox">
-
+        <div class="row">
+          <?php
+            $dados = mysql_fetch_assoc(mysql_query("select * from depoimento where flag_status = true order by rand() desc limit 1"));
+          ?>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-1 well">
-            <img src="img/fototeste.png" class="img-responsive pull-left">  
+            <img src="painel/arquivos/depoimento/<?=$dados['imagem']?>" class="img-responsive pull-left">  
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-              <p><span class="quotes-lg">&ldquo;</span>Além de ótimos clientes a Fabricando Web hoje também é uma grande parceira da nossa empresa, de forma eficiente e objetiva captou nossas necessidades e desenvolveu todo o nosso site, o que aumentou de forma bem significativa o volume de vendas. Hoje sempre que precisamos desenvolver alguma ação de promoção para Marbek, contamos sempre com as ideias e novidades que eles nos sugerem. Uma grande parceria!<span class="quotes-lg pull-right">&rdquo;</span></p> 
+              <p><strong><?=utf8_encode($dados['nome']." - ".$dados['cargo']." - ".$dados['empresa'])?></strong></p>
+              <p><span class="quotes-lg">&ldquo;</span><?=utf8_encode($dados['mensagem'])?><span class="quotes-lg pull-right">&rdquo;</span></p> 
             </div>
           </div>
         </div><!-- /.row -->
         <div class="row">
           <div class="col-lg-12 no-padding">
-            <button class="pull-right btn btn-primary btn-open-cadastro" type="button">Cadastrar Depoimento</button>
+            <button id="btn-open-cadastro" class="pull-right btn btn-primary btn-open-cadastro" type="button">Cadastrar Depoimento</button>
           </div>
+          <?php 
+            if(isset($_GET['depoimento'])){
+              $depoimento = $_GET['depoimento'];
+              if($depoimento == '1'){
+                echo '<div class="row mensagem-envio"><div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 form-group text-center"><div class="alert alert-success alert-contato alert-dismissable col-lg-6 col-lg-offset-3"><button type="button" class="close fechar-alert" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Depoimento enviado com sucesso</strong></div></div></div>';
+              }
+              else{
+                echo '<div class="row mensagem-envio"><div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 form-group text-center"><div class="alert alert-danger alert-contato show alert-dismissable col-lg-6 col-lg-offset-3"><button type="button" class="close fechar-alert" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Falha ao enviar depoimento, por favor tente novamente</strong></div></div></div>';
+              }
+            }
+          ?>
         </div><!-- /.row -->
         <div class="row depoimento-hidden">
           <div class='col-lg-10 col-md-10 col-sm-12 col-xs-10 depoimento-form col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-1'>
-            <form class="depoimento-form form" action="enviar.php?type=1" role="form">
+            <form class="form-depoimento form" action="cad-depoimento.php" method="post" role="form" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-xs-12 col-md-4 form-group">
                   <label for="name">nome:</label>
-                  <input class="form-control input-lg" id="name" name="name" placeholder="" type="text" required />      
+                  <input class="form-control input-lg" id="nome" name="nome" placeholder="" type="text" required />      
                 </div>
                 <div class="col-xs-12 col-md-4 form-group">
                   <label for="empresa">empresa:</label>
@@ -239,12 +253,12 @@
                 </div>
               </div>
               <label for="empresa">mensagem:</label>
-              <textarea class="form-control input-lg" id="message" name="message" placeholder="" rows="8" required></textarea>
+              <textarea class="form-control input-lg" id="mensagem" name="mensagem" placeholder="" rows="8" required></textarea>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
                 <input id="uploadFile" placeholder="" disabled="disabled" class="txtUpload btn"/>
                 <div class="fileUpload btn btn-primary">
                     <span>Selecione uma imagem</span>
-                    <input id="uploadBtn" type="file" class="upload" required />
+                    <input id="uploadBtn" type="file" class="upload" name="imagem" required />
                 </div>
             </div>
               <br>      
@@ -252,9 +266,6 @@
                 <div class="col-xs-12 col-md-12 form-group">
                   <button class="btn btn-primary btn-cadastrar-depoimento" type="submit">enviar</button>
                 </div>
-              </div>
-              <div class="row mensagem-envio">
-                <img src="img/loader.gif" class="loader center-block">
               </div>
             </form>
           </div>

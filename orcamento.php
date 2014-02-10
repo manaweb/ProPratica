@@ -10,44 +10,43 @@
 		<br>
 		<div class="row">
 			<div class="col-lg-12">
-				
 				<form class="form-horizontal orcamento-form" role="form" action="enviar.php?type=3">
 					<h2>Preencha os campos abaixo e solicite seu orçamento de acordo com a sua necessidade: </h2>
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 					  	<div class="form-group">
 					    	<label for="nome" class="col-sm-3 control-label">Nome: </label>
 						    <div class="col-sm-9">
-						      	<input type="text" class="form-control" id="nome" name="nome" placeholder="">
+						      	<input type="text" class="form-control" id="nome" name="nome" placeholder="" required>
 						    </div>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="empresa" class="col-sm-3 control-label">Empresa: </label>
 						    <div class="col-sm-9">
-						      	<input type="text" class="form-control" id="empresa" name="empresa" placeholder="">
+						      	<input type="text" class="form-control" id="empresa" name="empresa" placeholder="" required>
 						    </div>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="nome" class="col-sm-3 control-label">E-mail: </label>
 						    <div class="col-sm-9">
-						      	<input type="email" class="form-control" id="email" name="email" placeholder="">
+						      	<input type="email" class="form-control" id="email" name="email" placeholder="" required>
 						    </div>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="nome" class="col-sm-3 control-label">Telefone: </label>
 						    <div class="col-sm-9">
-						      	<input type="tel" class="form-control" id="telefone" name="telefone" placeholder="">
+						      	<input type="tel" class="form-control" id="telefone" name="telefone" placeholder="" required>
 						    </div>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="nome" class="col-sm-3 control-label">Cidade: </label>
 						    <div class="col-sm-9">
-						      	<input type="text" class="form-control" id="cidade" name="cidade" placeholder="">
+						      	<input type="text" class="form-control" id="cidade" name="cidade" placeholder="" required>
 						    </div>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="nome" class="col-sm-3 control-label">Estado: </label>
 						    <div class="col-sm-9">
-						      	<select name="estado" id="estado" class="form-control">
+						      	<select name="estado" id="estado" class="form-control" required>
 						      		<option value=""></option>
 									<option value="AC">Acre</option>
 									<option value="AL">Alagoas</option>
@@ -81,7 +80,7 @@
 					  	</div>
 				 	</div>
 				 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					  	<div class="form-group">
+<!-- 					  	<div class="form-group">
 					    	<label for="nome" class="col-sm-3 control-label">Setor: </label>
 						    <div class="col-sm-9">
 						      	<select name="setor" id="setor" class="form-control">
@@ -90,34 +89,19 @@
 						      		<option value="2">2</option>
 						      	</select>
 						    </div>
-					  	</div>
+					  	</div> -->
 					  	<div class="form-group">
 					    	<label for="nome" class="col-sm-3 control-label">Serviço: </label>
 						    <div class="col-sm-9">
-						      	<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Limpeza e conservação"> Limpeza e conservação
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Portaria"> Portaria
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Recepção"> Recepção
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Manutenção Predial"> Manutenção Predial
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Jardinagem"> Jardinagem
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Escritório"> Escritório
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Administração de Condomínios"> Administração de Condomínios
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="" name="servico" value="Outros Serviços"> Outros Serviços
-								</label>
+						      	<?php
+						      		$result = mysql_query("SELECT * FROM tborcamento_servicos ORDER BY id DESC");
+						      		while($dadosServicos = mysql_fetch_assoc($result))
+						      			echo '
+						      				<label class="checkbox-inline">
+											  	<input type="checkbox" id="" class="checkboxServico" name="servico[]" value="'.utf8_encode($dadosServicos['nome']).'"> '.utf8_encode($dadosServicos['nome']).'
+											</label>';
+
+						      	?>
 						    </div>
 					  	</div>
 					  	<div class="form-group">

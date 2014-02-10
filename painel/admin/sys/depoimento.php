@@ -1,22 +1,22 @@
 <? 
-	define('ID_MODULO',105,true);
+	define('ID_MODULO',112,true);
 	include("../../../php/config/config.php");
 	include('../includes/Config.php');
 	include('../includes/Topo.php');
 	
 
 	$Config = array(
-		'arquivo'=>'orcamento',
-		'tabela'=>'tborcamento',
-		'nome'=>'orcamento',
+		'arquivo'=>'depoimento',
+		'tabela'=>'depoimento',
+		'nome'=>'depoimento',
 		'id'=>'id',
 		'urlfixo'=>'', 
-		'pasta'=>'orcamento',
+		'pasta'=>'depoimento',
 	);
 
 ?>
 <div id="acessibilidade">
-	Voc&ecirc; est&aacute; aqui: <a href="orcamento.php">Or&ccedil;amento</a> &rsaquo; Consultar
+	Voc&ecirc; est&aacute; aqui: <a href="depoimento.php">Depoimentos</a> &rsaquo; Consultar
 </div>
 <div id="conteudo">
 <?
@@ -33,10 +33,11 @@
 	# Montando os campos
 	$campos = array(
 		#	0=>Tipo			1=>TÃ­tulo			2=>Fonte			3=>Url
-		array('texto',		'C&Oacute;DIGO',	'id',				''),
-		array('texto',		'CLIENTE',			'cliente',			''),
-		array('texto',		'EMAIL',			'email',			''),
-		array('texto',		'DATA DE ENVIO',	'data',				''),
+		array('texto',		'NOME',				'nome',				''),
+		array('texto',		'EMPRESA',			'empresa',			''),
+		array('texto',		'CARGO',			'cargo',			''),
+		array('texto',		'MENSAGEM',			'mensagem',			''),
+		array('foto',		'FOTO',				'imagem',			''),
 	);
 
 
@@ -45,9 +46,7 @@
 	
 	
 	$SQL = "
-			select o.id, o.flag_status, DATE_FORMAT( o.data , '%d/%m/%Y %H:%i:%s' ) as data, c.nome as cliente, c.email from tborcamento o, tbclientes c
-			 where o.id_cliente = c.id
-			 order by o.id desc
+			select * from depoimento order by id desc
 		   ";
 	
 	
@@ -62,7 +61,7 @@
 
 
 	# Listando
-	echo adminLista($campos,$dados,array('excluir', 'visualizar'),$Config,false);
+	echo adminLista($campos,$dados,array('excluir', 'status'),$Config,false);
 
 
 

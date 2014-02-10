@@ -371,23 +371,26 @@ function adminCampos2($campos,$config,$dados, $idOrcamento) {
 
 	$saida .= '</table>';
 
-	$resultProdutos = db_consulta("SELECT tbprodutos.nome as NomeProduto, tbitensorcamento.id_orcamento as IdOrc, tbitensorcamento.quantidade as quantidade, tbitensorcamento.variacao as variacao
-								FROM tbitensorcamento LEFT JOIN tbprodutos ON tbprodutos.id = tbitensorcamento.id_produto
-								where tbitensorcamento.id_orcamento = $idOrcamento");
+	$resultProdutos = db_consulta("SELECT tborcamento.servicos as servicos, mensagem
+								FROM tborcamento
+								where tborcamento.id = $idOrcamento");
 	$saida .= '
 				<table class="consulta">
 					<tr>
-						<th>Produto</th>
-						<th>Quantidade</th>
-						<th>Varia&ccedil;&atilde;o</th>
+						<th>Servi&ccedil;os Selecionados</th>
+						<th>Mensagem</th>
 					</tr>
 					<tbody>';
 	while($dadosProduto = mysql_fetch_array($resultProdutos)){
+		$arrayServicos = explode(";", $dadosProduto['servicos']);
+		$servicos = "";
+		foreach ($arrayServicos as $key => $value) {
+			$servicos .= ($key+1)." - ".$value."<br>";  
+		}
 		$saida .=
 						'<tr>
-							<td>'.$dadosProduto['NomeProduto'].'</td>
-							<td>'.$dadosProduto['quantidade'].'</td>
-							<td>'.$dadosProduto['variacao'].'</td>
+							<td class="text-left">'.$servicos.'</td>
+							<td>'.$dadosProduto['mensagem'].'</td>
 						</tr>';
 	}
 	$saida.=		

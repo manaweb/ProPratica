@@ -15,7 +15,7 @@
 
 
 	if ($_GET['ID']>0){ 
-		$dados = db_dados("SELECT o.id, DATE_FORMAT( o.data,  '%d/%m/%Y %H:%i:%s' ) AS data, CONCAT( c.primeironome,  ' ', c.ultimonome ) AS cliente, c.email, c.telefone, c.celular, c.cep, c.logradouro, c.numero, c.bairro, c.cidade, c.estado 
+		$dados = db_dados("SELECT o.id, DATE_FORMAT( o.data,  '%d/%m/%Y %H:%i:%s' ) AS data, c.nome AS cliente, c.email, c.telefone, c.empresa, c.setor, c.cidade, c.estado 
 							FROM tborcamento o, tbclientes c
 							WHERE o.id = ".$_GET['ID']."
 							AND o.id_cliente = c.id
@@ -41,11 +41,7 @@ include('../includes/Mensagem.php');
 		array('text',		'Cliente',				'cliente',			'300',			'',					'',											''),
 		array('text',		'Email',				'email',			'300',			'',					'',											''),
 		array('text',		'Telefone',				'telefone',			'300',			'',					'',											''),
-		array('text',		'Celular',				'celular',			'300',			'',					'',											''),
-		array('text',		'CEP',					'cep',				'300',		   	'',					'',											''),
-		array('text',		'Logradouro',			'logradouro',		'300',		   	'',					'',											''),
-		array('text',		'N&uacute;mero',		'numero',			'300',		   	'',					'',											''),
-		array('text',		'Bairro',				'bairro',			'300',		   	'',					'',											''),
+		array('text',		'Empresa',				'empresa',			'300',			'',					'',											''),
 		array('text',		'Cidade',				'cidade',			'300',		   	'',					'',											''),
 		array('text',		'Estado',				'estado',			'300',		   	'',					'',											''),
 		array('text',		'Data de Envio',		'data',				'300',		   	'',					'',											''),
@@ -65,6 +61,9 @@ include('../includes/Mensagem.php');
 <style>
 	.consulta * {
 		text-align: center !important;
+	}
+	.text-left{
+		text-align: left !important;	
 	}
 </style>
 <?

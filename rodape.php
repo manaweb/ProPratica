@@ -81,7 +81,7 @@
                   <strong>Email:</strong>
                   <a href="mailto:sac@propartica.com.br">sac@propartica.com.br</a>
                 </address>
-                <div class="facebook-icon"><a><img src="img/facebook.jpg" alt="Facebook"></a></div>
+                <div class="facebook-icon"><a href="https://www.facebook.com/pages/Propr%C3%A1tica/1393255317602838" target="_blank"><img src="img/facebook.jpg" alt="Facebook"></a></div>
               </div>
             </div>
           <div class="row">
@@ -144,24 +144,60 @@
     <!-- JavaScript -->
     <script src="js/vendor/jquery-1.10.1.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script>
     <script src="js/modern-business.js"></script>
     <script type="text/javascript" src="js/jquery.mousewheel-3.0.6.pack.js"></script>
-    <script type="text/javascript" src="js/scroll.js"></script>
-    <!--<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="screen" /> -->
-    <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <!--<script type="text/javascript" src="js/scroll.js"></script> -->
+    <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="screen" /> -->
     <script type="text/javascript">
       // document.getElementById("uploadBtn").onchange = function () {
       //   document.getElementById("uploadFile").value = this.value;
       // }
       $(function(){
-        $('.depoimento-form').ajaxForm();
+        //$('.depoimento-form').ajaxForm();
         $('.scroll-pane').jScrollPane({autoReinitialise: true, contentWidth: '0px'});
+        // $('.scroll-pane').each(
+        //   function()
+        //   {
+        //     $(this).jScrollPane(
+        //       {
+        //         showArrows: $(this).is('.arrow')
+        //       }
+        //     );
+        //     var api = $(this).data('jsp');
+        //     var throttleTimeout;
+        //     $(window).bind(
+        //       'resize',
+        //       function()
+        //       {
+        //         if (!throttleTimeout) {
+        //           throttleTimeout = setTimeout(
+        //             function()
+        //             {
+        //               api.reinitialise();
+        //               throttleTimeout = null;
+        //             },
+        //             50
+        //           );
+        //         }
+        //       }
+        //     );
+        //   }
+        // )
 
         $(".fale-conosco").click(function(){
           $("html, body").animate({scrollTop: $(document).height() + 'px'},500);  
         })
+
+        <?php
+          if(isset($depoimento)){
+            echo '
+            scrollToID("#depoimentos",500);
+            $("#btn-open-cadastro").trigger("click");
+            $(".mensagem-envio .alert").fadeIn("fast");
+            ';
+          }
+        ?>
 
         $(".goTo").click(function(){
           scrollToID($(this).attr('href'),500);
@@ -184,11 +220,15 @@
             };
         }
 
-        $("#contact, .depoimento-form, .orcamento-form").submit(function(){
+        $("#contact, .orcamento-form").submit(function(){
           var dados = $(this).serialize();
           $(".loader").show();
           $("input, .btn, select, textarea", this).attr("disabled", 'disabled');
           var action = $(this).attr("action");
+          if($( ".checkboxServico:checked" ).length == 0){
+            alert("Selecione pelo menos 1 serviço desejado");
+            return false;
+          }
           // $.post(action, $(this).serialize(),function(data) {
           $.ajax({
             type: "post",
@@ -196,23 +236,24 @@
             data: dados,
             url: action,
             success: function(data){
-              if(data.tipo == "success"){
-                var alerta = '<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 form-group text-center"><div class="alert alert-'+data.tipo+' alert-contato alert-dismissable col-lg-6 col-lg-offset-3">Mensagem enviada com sucesso</div></div>';
-                $("input, .btn, textarea", this).val("");
-                $(".loader").hide();
-                $(".mensagem-envio").append(alerta);
-                $(".mensagem-envio .alert").fadeIn();
-                $(".alert-contato.alert-success", this).fadeIn("fast");
-                $("input, .btn, textarea", this).removeAttr("disabled");
-              }else{
-                alert('erro');
+              var alerta = '<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 form-group text-center"><div class="alert alert-'+data.tipo+' alert-contato alert-dismissable col-lg-6 col-lg-offset-3"><button type="button" class="close fechar-alert" data-dismiss="alert" aria-hidden="true">&times;</button><strong>'+data.msg+'</strong></div></div>';
+              $("input, textarea", this).attr("value", "");
+              $(".loader").hide();
+              $(".mensagem-envio").append(alerta);
+              $(".mensagem-envio .alert").fadeIn();
+              $("input, .btn, select, textarea", this).removeAttr("disabled");
+              $(".alert-contato.alert-success", this).fadeIn("fast");
+              if(data.tipoAcao == 3){
+                setTimeout(function(){
+                  window.location = "index.php";
+                }, 5000)
               }
             }
           });
           // });
           return false;
         });
-
+        
         $(".btn-open-cadastro").click(function(){
           $(".depoimento-hidden").slideToggle(400);
         })

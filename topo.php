@@ -13,6 +13,10 @@
 
     <title>ProPratica</title>
 
+    
+  </head>
+
+  <body>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -21,10 +25,6 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/scroll.css" />
-  </head>
-
-  <body>
-
     <nav class="navbar" role="navigation">
       <div class="container topo">
         <div class="navbar-header">
@@ -39,7 +39,7 @@
             <img src="img/topo.png" class="pull-right invisible">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="index.php">home</a></li>
-              <li><a href="sobre.php">empresa</a></li>
+              <li><a href="empresa.php">empresa</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">serviços <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -63,7 +63,7 @@
             <img src="img/topo.png" class="pull-right invisible">
             <ul class="nav navbar-nav navbar-right menu">
               <li><a href="index.php">home</a></li>
-              <li><a href="sobre.php">empresa</a></li>
+              <li><a href="empresa.php">empresa</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">serviços <b class="caret"></b></a>
                 <ul class="dropdown-menu">

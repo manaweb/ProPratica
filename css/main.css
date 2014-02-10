@@ -542,3 +542,27 @@ address{
     text-align: center;
     margin-top: 20px;
 }
+.menssegerbox p {
+    word-break: break-word;
+}
+.menssegerbox img {
+    max-width: 100px;
+}
+.alert-success strong {
+    color: #468847 !important;
+}
+/*Fix modal servico*/
+#container
+{
+    width: 60%;
+}
+pre
+{
+    width: 95%;
+}
+.scroll-pane
+{
+    width: 100%;
+    height: 200px;
+    overflow: auto;
+}

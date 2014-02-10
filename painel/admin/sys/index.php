@@ -1,4 +1,4 @@
-<? 
+<?php 
 	define('ID_MODULO',0,true);
 	include('../includes/Config.php');
 	include('../includes/Topo.php');
@@ -20,7 +20,7 @@
  </style>
  
 
-<?
+<?php
  
 	include('../includes/Mensagem.php');
 ?>
@@ -51,14 +51,14 @@
                                 <thead>
                                     <tr>
                                         <td></td>
-<?
+<?php
 $hoje = time(); 
 $ontem = $hoje - (24*3600); 
 $anteontem = $hoje - (48*3600);
 ?>
-										<th scope="col"> <span  style="color:green; font-weight:bold; text-decoration:underline;"><?echo date('d/m/Y', $hoje); ?> - Hoje</span></th>
-										<th scope="col"> <?echo date('d/m/Y', $ontem); ?></th>
-										<th scope="col"> <?echo date('d/m/Y', $anteontem);?></th>
+										<th scope="col"> <span  style="color:green; font-weight:bold; text-decoration:underline;"><?php echo date('d/m/Y', $hoje); ?> - Hoje</span></th>
+										<th scope="col"> <?php echo date('d/m/Y', $ontem); ?></th>
+										<th scope="col"> <?php echo date('d/m/Y', $anteontem);?></th>
 										
                                         
 										
@@ -68,16 +68,16 @@ $anteontem = $hoje - (48*3600);
                                 <tbody>
                                     <tr>
                                         <th scope="row">Visitas</th>
-<?
+<?php
 	$i=0;
 	$SQL = "SELECT * FROM visitantes ORDER BY id DESC";
 	$Lista = new Consulta($SQL,3,$PGATUAL);
 	while ($linha = db_lista($Lista->consulta)) { $i++;
 ?>
 
-                                        <td><?=$linha['contador'];?></td>
+                                        <td><?php echo $linha['contador'];?></td>
 										
-<?
+<?php
 	}
 ?>
                                     </tr>
@@ -92,14 +92,14 @@ $anteontem = $hoje - (48*3600);
                                 <thead>
                                     <tr>
                                         <td></td>
-<?
+<?php
 $hoje = time(); 
 $ontem = $hoje - (24*3600); 
 $anteontem = $hoje - (48*3600);
 ?>
-										<th scope="col"> <span  style="color:green; font-weight:bold; text-decoration:underline;"><?echo date('d/m/Y', $hoje); ?> - Hoje</span></th>
-										<th scope="col"> <?echo date('d/m/Y', $ontem); ?></th>
-										<th scope="col"> <?echo date('d/m/Y', $anteontem);?></th>
+										<th scope="col"> <span  style="color:green; font-weight:bold; text-decoration:underline;"><?php echo date('d/m/Y', $hoje); ?> - Hoje</span></th>
+										<th scope="col"> <?php echo date('d/m/Y', $ontem); ?></th>
+										<th scope="col"> <?php echo date('d/m/Y', $anteontem);?></th>
 										
 										
                                     </tr>
@@ -107,16 +107,16 @@ $anteontem = $hoje - (48*3600);
                                 <tbody>
                                     <tr>
                                         <th scope="row">Visitas</th>
-<?
+<?php
 	$i=0;
 	$SQL = "SELECT * FROM visitantes ORDER BY id DESC";
 	$Lista = new Consulta($SQL,3,$PGATUAL);
 	while ($linha = db_lista($Lista->consulta)) { $i++;
 ?>	
 
-                                        <td><?=$linha['contador'];?></td>
+                                        <td><?php echo $linha['contador'];?></td>
 										
-<?
+<?php
 	}
 ?>
                                     </tr>
@@ -137,19 +137,19 @@ $anteontem = $hoje - (48*3600);
                     	<ul class="summarystats">
 							<?php if(usuarioPermissao($_SESSION['Admin']['id_usuario'],'86')){?>
 								<li>
-								<? $sql = "SELECT * FROM tborcamento where flag_status = 0";
+								<?php  $sql = "SELECT * FROM tborcamento where flag_status = 0";
 								$query = mysql_query($sql) or die(mysql_error());
 								$total = mysql_num_rows($query); ?>
-	                            	<p class="statcount"><img src="../img/coment.png" /></p> <p><span id='comentPendent'><?echo $total;?></span> Pedidos de Or&ccedil;amento</p>    <p class="statview"><a href="orcamento.php" title="view">ver</a></p>
+	                            	<p class="statcount"><img src="../img/coment.png" /></p> <p><span id='comentPendent'><?php echo $total;?></span> Pedidos de Or&ccedil;amento</p>    <p class="statview"><a href="orcamento.php" title="view">ver</a></p>
 	                            </li>
-							<?}?>
+							<?php }?>
                         	
 							
-							<? if ($_SESSION['Admin']['id_usuario']==1) { ?>
+							<?php  if ($_SESSION['Admin']['id_usuario']==1) { ?>
 							<li>
                             	<p class="statcount"><img src="../img/administradores.png" /></p> <p>Administradores do site</p>    <p class="statview"><a href="_usuarios.php" title="view">ver</a></p>
                             </li>
-                            <? } ?>
+                            <?php  } ?>
                             <li>
                             	<p class="statcount"><img src="../img/alterarSenha.png" /></p> <p>Alterar a sua senha</p>    <p class="statview"><a href="_senha.php" title="view">ver</a></p>
                             </li>
@@ -172,4 +172,4 @@ $anteontem = $hoje - (48*3600);
 			  
 
  
-<? include('../includes/Rodape.php'); ?>
+<?php include('../includes/Rodape.php'); ?>
